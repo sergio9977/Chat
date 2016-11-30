@@ -1,5 +1,7 @@
 <?php
 
+use common\models\User;
+use yii\grid\GridView;
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
@@ -7,13 +9,29 @@ $this->title = 'My Yii Application';
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1>Bienvenido</h1>
+        <h1>Congratulations!</h1>
 
         <p class="lead">You have successfully created your Yii-powered application.</p>
 
         <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
     </div>
-
+ <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+            /*[
+              'attribute'=>'user_id',
+              'label'=>'Usuario Conectados',
+              'value'=>  function ($model){
+                  $conectados = User::findOne($model->user_id);
+                  return $conectados->username;
+                },
+                //'filter' =>  ArrayHelper::map(User::find()->all(), 'id', 'username'),
+            ],*/
+            'user_id',
+        ],
+    ]); ?>
     <div class="body-content">
 
         <div class="row">

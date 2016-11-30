@@ -22,7 +22,8 @@
         "2amigos/yii2-date-picker-widget": "~1.0",
         "yiisoft/yii2-authclient": "*",
         "yiisoft/yii2-jui": "*",
-        "sjaakp/yii2-telex": "*"
+        "sjaakp/yii2-telex": "*",
+        "sintret/yii2-chat-adminlte": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

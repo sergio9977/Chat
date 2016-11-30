@@ -14,6 +14,7 @@ use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\Noticia;
 use yii\data\Pagination;
+use frontend\models\UserSearch;
 
 /**
  * Site controller
@@ -94,9 +95,15 @@ public function successCallback1($client)
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        // return $this->render('index');
+        $searchModel = new UserSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
-    public function actionHome()
+   /* public function actionHome()
     {
         $query = Noticia::find();
         $pagination = new Pagination([
@@ -114,7 +121,7 @@ public function successCallback1($client)
             'pagination' => $pagination,
             ]);
         
-    }
+    }*/
     
     
     
