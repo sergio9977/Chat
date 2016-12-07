@@ -27,10 +27,15 @@ return [
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
         ],
-        'session' => [
+       // 'session' => [
             // this is the name of the session cookie used for login on the frontend
-            'name' => 'advanced-frontend',
-        ],
+       //     'name' => 'advanced-frontend',
+       // ],
+          'session' => [
+        'class' => '\frontend\controllers\CustomDbSession',
+        // 'db' => 'mydb',  // the application component ID of the DB connection. Defaults to 'db'.
+        'sessionTable' => 'session_frontend_user', // session table name. Defaults to 'session'.
+    ], 
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

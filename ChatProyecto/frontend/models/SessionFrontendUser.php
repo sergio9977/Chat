@@ -26,14 +26,17 @@ class SessionFrontendUser extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public $agregaramigo;
+    public  $agregarchat;
     public function rules()
     {
         return [
-            [['id', 'ip'], 'required'],
+            [['id', 'user_id', 'ip'], 'required'],
             [['user_id', 'expire'], 'integer'],
             [['data'], 'string'],
             [['id'], 'string', 'max' => 80],
             [['ip'], 'string', 'max' => 15],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => \common\models\User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -44,10 +47,18 @@ class SessionFrontendUser extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
+            'user_id' => 'User',
             'ip' => 'Ip',
             'expire' => 'Expire',
             'data' => 'Data',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(\common\models\User::className(), ['id' => 'user_id']);
     }
 }

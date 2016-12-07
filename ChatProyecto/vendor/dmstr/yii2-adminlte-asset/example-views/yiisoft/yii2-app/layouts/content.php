@@ -4,11 +4,7 @@ use dmstr\widgets\Alert;
 
 ?>
 <div class="content-wrapper">
-     <?php echo \sintret\chat\ChatRoom::widget([
-            'url' => \yii\helpers\Url::to(['/chat/send-chat']),
-            'userModel'=>  \common\models\User::className(),
-            'userField' => 'avatarImage'
-                ]); ?>
+     
     <section class="content-header">
         <?php if (isset($this->blocks['content-header'])) { ?>
             <h1><?= $this->blocks['content-header'] ?></h1>
